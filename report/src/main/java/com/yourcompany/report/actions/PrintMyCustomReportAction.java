@@ -1,4 +1,4 @@
-package com.yourcompany.report.action;
+package com.yourcompany.report.actions;
 
 import java.util.*;
 
@@ -15,7 +15,7 @@ public class PrintMyCustomReportAction extends JasperReportBaseAction {
 
 	@Override
 	protected String getJRXML() throws Exception {
-		return "Blank_A4.jrxml";
+		return "MyCustomReport.jrxml";
 	}
 
 	@Override

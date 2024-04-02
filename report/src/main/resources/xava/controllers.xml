@@ -25,8 +25,8 @@
     <controller name="YourFirstEntity">
     	<extends controller="Typical"/>
     	<action name="printCustomReport" icon="printer" mode="list"
-        	class="com.yourcompany.report.action.PrintMyCustomReportAction">
+        	class="com.yourcompany.report.actions.PrintMyCustomReportAction">
     	</action>
-	</controller>  
+	</controller>
     
 </controllers>
