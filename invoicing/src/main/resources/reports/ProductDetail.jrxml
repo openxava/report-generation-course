@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ProductDetail" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a204e6b9-9279-4760-9afc-7740de9e8229">
+	<parameter name="id" class="java.lang.Integer"/>
+	<parameter name="description" class="java.lang.String"/>
+	<parameter name="price" class="java.math.BigDecimal"/>
+	<parameter name="category" class="java.lang.String"/>
+	<parameter name="author" class="java.lang.String"/>
+	<parameter name="isbn" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="114" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="30" height="30" uuid="30990404-e5b6-4bf1-81f5-5002a17baf6e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="30" width="200" height="30" uuid="c2f1b3f6-682c-4ed0-bc81-6d274439bef9"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Name: " + $P{description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="60" width="200" height="30" uuid="952f9732-ef6a-4fae-97f4-19398d7ef3d3"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Price: " + $P{price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="30" width="200" height="30" uuid="e51d57b7-c0b9-49c0-b38e-1fb0b9a73b69"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Author: " + $P{author}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="60" width="200" height="30" uuid="8fb4bf86-c1d4-4e8c-b7c0-4509b9e441f1"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ISBN: " + $P{isbn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="0" width="170" height="30" uuid="ee326c82-62ac-4d96-bd87-6e96a9bd9489"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="200" height="30" uuid="2d743f4b-fce1-4f46-abe0-2ddd89144076"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Category: " + $P{category}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>
