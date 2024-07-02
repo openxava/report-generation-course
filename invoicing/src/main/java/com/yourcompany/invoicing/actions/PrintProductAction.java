@@ -30,7 +30,6 @@ public class PrintProductAction extends JasperReportBaseAction {
 	protected Map getParameters() throws Exception {
 		Messages errors = MapFacade.validate("Product", getView().getValues());
 		if (errors.contains()) throw new ValidationException(errors);
-		System.out.println(getView().getValue("number"));
 		
 		Map parameters = new HashMap();	
 		parameters.put("id", (getProduct().getNumber()));
@@ -51,5 +50,4 @@ public class PrintProductAction extends JasperReportBaseAction {
 		return product;
 	}
 
-	
 }

@@ -104,7 +104,7 @@
 		<action name="printProductDetail"
 				class="com.yourcompany.invoicing.actions.PrintProductAction"
 				mode="detail"
-				icon="printer"></action>
+				icon="printer"/>
 	</controller>
 
 </controllers>
