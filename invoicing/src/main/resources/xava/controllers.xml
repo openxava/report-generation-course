@@ -88,6 +88,10 @@
 		<!-- hidden="true" : Because we don't want the action to be shown in module 
 			button bar icon="table-row-plus-after" : The same icon as for the standard 
 			action -->
+		<action name="printInvoiceDetail"
+				class="com.yourcompany.invoicing.actions.PrintInvoiceDetailAction"
+				mode="detail"
+				icon="printer"/>
 	</controller>
 
 	<controller name="AddOrdersToInvoice">

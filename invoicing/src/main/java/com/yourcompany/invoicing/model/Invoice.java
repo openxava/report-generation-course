@@ -5,6 +5,7 @@ import java.util.*;
 import javax.persistence.*;
 
 import org.openxava.annotations.*;
+import org.openxava.jpa.*;
 
 import lombok.*;
 
@@ -52,5 +53,13 @@ public class Invoice extends CommercialDocument{
             }
             return invoice;
         }
+    
+    public static Invoice findByYearNumber(int year, int number) {
+    	Query query = XPersistence.getManager()
+    			.createQuery("from Invoice as i where i.year = :year and number = :number");
+    	query.setParameter("year", year);
+    	query.setParameter("number", number);
+    	return (Invoice) query.getSingleResult();
+    }
 	
 }
