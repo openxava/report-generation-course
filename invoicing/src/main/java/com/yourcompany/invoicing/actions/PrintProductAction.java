@@ -7,10 +7,12 @@ import org.openxava.jpa.*;
 import org.openxava.model.*;
 import org.openxava.util.*;
 import org.openxava.validators.*;
+import org.openxava.web.editors.*;
 
 import com.yourcompany.invoicing.model.*;
 
 import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.*;
 
 public class PrintProductAction extends JasperReportBaseAction {
 
@@ -18,7 +20,7 @@ public class PrintProductAction extends JasperReportBaseAction {
 	
 	@Override
 	protected JRDataSource getDataSource() throws Exception {
-		return new JREmptyDataSource();
+		return new JRBeanCollectionDataSource(FilePersistorFactory.getInstance().findLibrary(getProduct().getPhotos()));
 	}
 
 	@Override
@@ -38,6 +40,14 @@ public class PrintProductAction extends JasperReportBaseAction {
 		parameters.put("isbn", getProduct().getIsbn());
 		parameters.put("category", getProduct().getCategory().getDescription());
 		parameters.put("price", getProduct().getPrice());
+		
+		Collection<AttachedFile> attachedFiles = FilePersistorFactory.getInstance().findLibrary(getProduct().getPhotos());
+		byte[] file = attachedFiles.iterator().next().getData();
+		parameters.put("photoFromParameter", file);
+		
+		/*AttachedFile img = new AttachedFile();
+		img = FilePersistorFactory.getInstance().find(getProduct().getPhotos());
+		byte[] fileImg = img.getData();*/
 		
 		return parameters;
 	}
