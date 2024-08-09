@@ -19,15 +19,37 @@
 			<artifactId>openxava</artifactId>
 			<version>7.3</version>
 		</dependency>
-		
-		
+
+		<dependency>
+			<groupId>net.sf.barcode4j</groupId>
+			<artifactId>barcode4j</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.xmlgraphics</groupId>
+			<artifactId>batik-bridge</artifactId>
+			<version>1.11</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>3.3.0</version>
+		</dependency>
 		<!-- 
 		To access to your database uncomment the corresponding entry 
 		from the below dependencies. If you don't find yours, look in
 		internet for the maven depencency for your database and add it 
 		here yourself.
 		-->
-		
+
 		<!-- MySQL 
 		<dependency>
 			<groupId>mysql</groupId>
@@ -35,7 +57,7 @@
     		<version>8.0.29</version>
 		</dependency>
 		-->
-		
+
 		<!-- PostgreSQL 
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -43,7 +65,7 @@
     		<version>42.4.0</version>
 		</dependency>
 		-->
-		
+
 		<!-- Oracle 
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
@@ -51,7 +73,7 @@
 			<version>21.5.0.0</version>
 		</dependency>
 		-->
-		
+
 		<!-- AS/400
 		<dependency>
 			<groupId>net.sf.jt400</groupId>
@@ -59,7 +81,7 @@
 			<version>11.0</version>
 		</dependency>
 		-->
-		
+
 		<!-- Microsoft SQL Server
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
@@ -67,7 +89,7 @@
     		<version>10.2.1.jre8</version>
 		</dependency>
 		-->
-		
+
 		<!-- Informix
 		<dependency>
 			<groupId>com.ibm.informix</groupId>
@@ -75,7 +97,7 @@
 			<version>4.50.8</version>
 		</dependency>
 		-->
-		
+
 		<!-- Db2
 		<dependency>
 			<groupId>com.ibm.db2</groupId>
@@ -83,7 +105,7 @@
 			<version>11.5.7.0</version>
 		</dependency>
 		-->
-		
+
 		<!-- Firebird
 		<dependency>
 			<groupId>org.firebirdsql.jdbc</groupId>
@@ -91,7 +113,7 @@
 			<version>4.0.6.java8</version>
 		</dependency>
 		-->
-		
+
 	</dependencies>
 
 	<build>

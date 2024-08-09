@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ProductDetail" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a204e6b9-9279-4760-9afc-7740de9e8229">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ProductDetail" columnCount="3" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="185" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a204e6b9-9279-4760-9afc-7740de9e8229">
 	<parameter name="id" class="java.lang.Integer"/>
 	<parameter name="description" class="java.lang.String"/>
 	<parameter name="price" class="java.math.BigDecimal"/>
 	<parameter name="category" class="java.lang.String"/>
 	<parameter name="author" class="java.lang.String"/>
 	<parameter name="isbn" class="java.lang.String"/>
+	<parameter name="photoFromParameter" class="java.lang.Object"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
+	<field name="data" class="java.lang.Object"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="114" splitType="Stretch">
+		<band height="180" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="30" height="30" uuid="30990404-e5b6-4bf1-81f5-5002a17baf6e"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -64,6 +66,45 @@
 				</textElement>
 				<textFieldExpression><![CDATA["Category: " + $P{category}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="0" y="90" width="80" height="90" uuid="fc0b7d07-6359-446d-8d64-129004306a3b"/>
+				<imageExpression><![CDATA[new ByteArrayInputStream((byte[])$P{photoFromParameter})]]></imageExpression>
+			</image>
+			<componentElement>
+				<reportElement x="280" y="104" width="100" height="30" uuid="0423d9a3-4c13-4187-b1ca-603464062a04"/>
+				<jr:EAN13 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA[$P{isbn}]]></jr:codeExpression>
+				</jr:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement x="380" y="100" width="100" height="70" uuid="c186a578-40fa-439c-b664-859510e29d51"/>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA[$P{isbn}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
 		</band>
 	</title>
+	<columnHeader>
+		<band height="30">
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="0" y="0" width="100" height="30" isPrintInFirstWholeBand="true" uuid="e3fc4f14-7791-4d5a-9481-054c4db86798">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2b3f3db0-565e-4841-9f4f-55bdf1d2ea4d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Product image]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="150">
+			<image>
+				<reportElement x="0" y="0" width="130" height="150" uuid="a5484141-5b3b-430a-9d33-0a46a48713de">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2b3f3db0-565e-4841-9f4f-55bdf1d2ea4d"/>
+				</reportElement>
+				<imageExpression><![CDATA[new ByteArrayInputStream((byte[])$F{data})]]></imageExpression>
+			</image>
+		</band>
+	</detail>
 </jasperReport>

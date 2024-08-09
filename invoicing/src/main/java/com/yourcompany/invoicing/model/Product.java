@@ -37,6 +37,7 @@ public class Product {
     BigDecimal price;  // BigDecimal is typically used for money
 
     @Files // A complete image gallery is available
+    //@File
     @Column(length=32) // The 32 length string is for storing the key of the gallery
     String photos;
      
