@@ -97,6 +97,11 @@
 				class="com.yourcompany.invoicing.actions.PrintInvoiceListAction"
 				mode="list"
 				icon="printer"/>
+				
+		<action name="printInvoiceWithOrders"
+				class="com.yourcompany.invoicing.actions.PrintInvoiceWithOrdersAction"
+				mode="detail"
+				icon="printer"/>
 	</controller>
 
 	<controller name="AddOrdersToInvoice">
