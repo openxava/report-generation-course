@@ -120,5 +120,13 @@
 				mode="detail"
 				icon="printer"/>
 	</controller>
+	
+	<controller name="Customer">
+		<extends controller="Invoicing"/>
+		<action name="printCustomerInvoices"
+				class="com.yourcompany.invoicing.actions.PrintCustomerInvoicesAction"
+				mode="detail"
+				icon="printer"/>
+	</controller>
 
 </controllers>
