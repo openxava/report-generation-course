@@ -127,6 +127,18 @@
 				class="com.yourcompany.invoicing.actions.PrintCustomerInvoicesAction"
 				mode="detail"
 				icon="printer"/>
+		<action name="printInvoicesByDateRange"
+				class="com.yourcompany.invoicing.actions.ShowCustomDateRangeDialogAction"
+				mode="detail"
+				icon="printer"/>
+	</controller>
+	
+	<controller name="CustomDateRange">
+		<extends controller="Invoicing"/>
+		<action name="print"
+				class="com.yourcompany.invoicing.actions.PrintCustomerInvoicesByDateRangeAction"
+				mode="detail"
+				icon="printer"/>
 	</controller>
 
 </controllers>
