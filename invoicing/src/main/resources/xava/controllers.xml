@@ -131,6 +131,10 @@
 				class="com.yourcompany.invoicing.actions.ShowCustomDateRangeDialogAction"
 				mode="detail"
 				icon="printer"/>
+		<action name="printAnnualSummary"
+				class="com.yourcompany.invoicing.actions.PrintAnnualSummaryAction"
+				mode="list"
+				icon="printer"/>
 	</controller>
 	
 	<controller name="CustomDateRange">

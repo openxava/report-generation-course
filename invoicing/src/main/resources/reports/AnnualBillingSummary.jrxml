@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AnnualBillingSummary" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d851951d-5893-4a65-bc3d-72c858e780c1">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Invoicing"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[SELECT 
+c.NAME, 
+c.STATE, 
+c.CITY, 
+count (C.NUMBER) AS COUNT, 
+sum(d.TOTALAMOUNT) AS TOTALAMOUNT 
+FROM CUSTOMER c 
+Left Join COMMERCIALDOCUMENT d 
+ON c.NUMBER = d.CUSTOMER_NUMBER 
+WHERE  d.DTYPE = 'Invoice' 
+	AND d.DELETED = false 
+	AND YEAR(d.DATE) = 2024 
+GROUP BY c.NAME, 
+	c.STATE, 
+	c.CITY 
+ORDER BY c.STATE ASC, 
+	c.CITY ASC]]>
+	</queryString>
+	<field name="NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="CUSTOMER"/>
+	</field>
+	<field name="STATE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="STATE"/>
+		<property name="com.jaspersoft.studio.field.label" value="STATE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="CUSTOMER"/>
+	</field>
+	<field name="CITY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CITY"/>
+		<property name="com.jaspersoft.studio.field.label" value="CITY"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="CUSTOMER"/>
+	</field>
+	<field name="COUNT" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="COUNT"/>
+		<property name="com.jaspersoft.studio.field.label" value="COUNT"/>
+	</field>
+	<field name="TOTALAMOUNT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="TOTALAMOUNT"/>
+		<property name="com.jaspersoft.studio.field.label" value="TOTALAMOUNT"/>
+	</field>
+	<variable name="TOTALAMOUNT1" class="java.math.BigDecimal" resetType="Group" resetGroup="CITY" calculation="Sum">
+		<variableExpression><![CDATA[$F{TOTALAMOUNT}]]></variableExpression>
+	</variable>
+	<variable name="TOTALAMOUNT2" class="java.math.BigDecimal" resetType="Group" resetGroup="STATE" calculation="Sum">
+		<variableExpression><![CDATA[$F{TOTALAMOUNT}]]></variableExpression>
+	</variable>
+	<variable name="NUMBEROFCUSTOMERS" class="java.lang.Integer" resetType="Group" resetGroup="STATE" calculation="Count">
+		<variableExpression><![CDATA[$F{NAME}]]></variableExpression>
+	</variable>
+	<group name="STATE" keepTogether="true">
+		<groupExpression><![CDATA[$F{STATE}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<textField>
+					<reportElement x="0" y="0" width="230" height="30" uuid="b47ec9f3-6993-4cba-89bd-a55ca7cdf20c">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="89ca36ce-f3dd-45c4-bb00-99dbbf7b7bb4"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["STATE: " + $F{STATE}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="36">
+				<textField>
+					<reportElement x="280" y="0" width="265" height="30" uuid="4fc7f1f9-a64b-423f-b2c5-9b5a1a14185e"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["SUM OF STATE " + $F{STATE} + ": " + $V{TOTALAMOUNT2}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="110" y="0" width="170" height="30" uuid="7e35930a-837c-4bb5-8056-30a65fa0ddd6"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA["NUMBER OF CUSTOMERS: " + $V{NUMBEROFCUSTOMERS}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-5" y="30" width="550" height="1" uuid="4f2fb7bc-14d6-4f70-96e7-a2dcca0039b3"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="CITY" keepTogether="true">
+		<groupExpression><![CDATA[$F{CITY}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<textField>
+					<reportElement x="10" y="0" width="200" height="30" uuid="c5316e6c-e898-4df2-8906-9b1e49802886"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["CITY: " +$F{CITY}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="210" y="0" width="140" height="30" uuid="c35ceda8-1f4c-4a2f-a7f9-95f448263afb">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3df3c111-b793-4a32-bc1e-86aa6b2428a5"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[BILLED INVOICES]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="370" y="0" width="174" height="30" uuid="dc9c5469-e124-4cc4-bd3f-8e97aae52b4d">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e21ac55a-f11e-48bb-a72e-ec1481177f69"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[TOTALAMOUNT]]></text>
+				</staticText>
+				<line>
+					<reportElement x="10" y="30" width="533" height="1" uuid="ee3f8874-9140-4a56-942a-6a82c95240d3"/>
+					<graphicElement>
+						<pen lineStyle="Dashed"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="31">
+				<textField>
+					<reportElement x="280" y="0" width="265" height="30" uuid="cadb8e12-f2a6-4782-8151-6489b8de0a10"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["SUM OF CITY " + $F{CITY} + ": " + $V{TOTALAMOUNT1}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="10" y="30" width="533" height="1" uuid="bea20905-ba6c-4c37-8dc6-1fa83e849221"/>
+					<graphicElement>
+						<pen lineStyle="Dashed"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="550" height="30" uuid="6f159e41-b2d5-4426-8215-fc4e92ee9708"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANNUAL BILLING SUMMARY]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="0" width="220" height="30" uuid="39ca6c1e-5b4a-4002-aca7-8cf24ca27974">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a6a89513-5701-4295-95e0-2e935429b905"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="0" width="100" height="30" uuid="8382d369-7b09-4350-9f63-32469b3f156b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3df3c111-b793-4a32-bc1e-86aa6b2428a5"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="0" width="180" height="30" uuid="33aadb6f-525d-4985-a5e8-9b2a23af9555">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e21ac55a-f11e-48bb-a72e-ec1481177f69"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["$ " + $F{TOTALAMOUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
