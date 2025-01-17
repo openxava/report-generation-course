@@ -77,7 +77,7 @@ ORDER BY c.STATE ASC,
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="12" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA["SUM OF STATE " + $F{STATE} + ": " + $V{TOTALAMOUNT2}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["SUM OF STATE " + $F{STATE} + ": $" + $V{TOTALAMOUNT2}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="110" y="0" width="170" height="30" uuid="7e35930a-837c-4bb5-8056-30a65fa0ddd6"/>
@@ -113,7 +113,7 @@ ORDER BY c.STATE ASC,
 					<text><![CDATA[BILLED INVOICES]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="370" y="0" width="174" height="30" uuid="dc9c5469-e124-4cc4-bd3f-8e97aae52b4d">
+					<reportElement x="430" y="0" width="114" height="30" uuid="dc9c5469-e124-4cc4-bd3f-8e97aae52b4d">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e21ac55a-f11e-48bb-a72e-ec1481177f69"/>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -136,7 +136,7 @@ ORDER BY c.STATE ASC,
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="12" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA["SUM OF CITY " + $F{CITY} + ": " + $V{TOTALAMOUNT1}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["SUM OF CITY " + $F{CITY} + ": $" + $V{TOTALAMOUNT1}]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="10" y="30" width="533" height="1" uuid="bea20905-ba6c-4c37-8dc6-1fa83e849221"/>
@@ -182,13 +182,13 @@ ORDER BY c.STATE ASC,
 				<textFieldExpression><![CDATA[$F{COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="330" y="0" width="180" height="30" uuid="33aadb6f-525d-4985-a5e8-9b2a23af9555">
+				<reportElement x="365" y="0" width="180" height="30" uuid="33aadb6f-525d-4985-a5e8-9b2a23af9555">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e21ac55a-f11e-48bb-a72e-ec1481177f69"/>
 				</reportElement>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA["$ " + $F{TOTALAMOUNT}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["$" + $F{TOTALAMOUNT}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
